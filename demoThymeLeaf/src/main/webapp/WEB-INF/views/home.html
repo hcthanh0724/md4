@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 300px;
+            height: 290px;
+        }
+    </style>
+</head>
+<body>
+<h1>Valorant blog</h1>
+<div>
+    <form method="get" action="/search">
+        <input type="text" name="header1">
+        <button type="submit">Search</button>
+    </form>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='/create';">Add Student</button>
+    <br>
+    <table>
+            <tr th:each = "s : ${student}">
+<!--                <th th:text="${s.id}"></th>-->
+                <th th:text="${s.name}"></th>
+                <th th:text="${s.age}"></th>
+                <th th:text="${s.country}"></th>
+                <th th:text="${s.name_class}"></th>
+                <th><img th:src="${s.img}"></th>
+                <th><a th:href="@{/edit/{id}(id=${s.getId()})}">Edit</a></th>
+                <th><a th:href="@{/delete/{id}(id=${s.getId()})}">Delete</a></th>
+            </tr>
+    </table>
+</div>
+</body>
+</html>
